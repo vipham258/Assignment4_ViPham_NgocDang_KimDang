@@ -10,7 +10,6 @@ package com.algonquincollege.cst8277.models;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,17 +30,19 @@ public class Portfolio extends ModelBase implements Serializable {
 
     protected double currentValue;
     protected List<Asset> assets;
-    
+
     public Portfolio() {
     }
 
-    //balance and currentValue are same thing for a portfolio
+    // balance and currentValue are same thing for a portfolio
     public double currentValue() {
         return currentValue;
     }
+
     public double getBalance() {
         return currentValue;
     }
+
     public void setBalance(double currentValue) {
         this.currentValue = currentValue;
     }
@@ -53,15 +54,17 @@ public class Portfolio extends ModelBase implements Serializable {
     public int getId() {
         return this.id;
     }
-    
-	//TODO - finish the @OneToMany mapping
+
+    @OneToMany(mappedBy = "owner")
     @JsonManagedReference
     public List<Asset> getAssets() {
         return assets;
     }
+
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
     }
+
     public void addAsset(Asset asset) {
         getAssets().add(asset);
     }

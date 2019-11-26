@@ -10,6 +10,7 @@ package com.algonquincollege.cst8277.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="PLATFORM_ROLE")
+@Table(name = "PLATFORM_ROLE")
 public class PlatformRole extends ModelBase implements Serializable {
     /** explicit set serialVersionUID */
     private static final long serialVersionUID = 1L;
@@ -40,24 +41,29 @@ public class PlatformRole extends ModelBase implements Serializable {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
 
+    @Column(name = "ROLE_NAME")
     public String getRoleName() {
         return roleName;
     }
+
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
 
-    @ManyToMany(mappedBy="platformRoles")
+    @ManyToMany(mappedBy = "platformRoles")
     public List<PlatformUser> getPlatformUsers() {
         return platformUsers;
     }
+
     public void setPlatformUsers(List<PlatformUser> platformUsers) {
         this.platformUsers = platformUsers;
     }
+
     public void addPlatformUser(PlatformUser user) {
         getPlatformUsers().add(user);
     }
