@@ -11,13 +11,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -26,7 +25,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity(name = "User")
-@Table(name="USER_ACCOUNT")
+@Table(name = "USER_ACCOUNT")
 public class User extends ModelBase implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -35,8 +34,8 @@ public class User extends ModelBase implements Serializable {
 
     @Override
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     public int getId() {
         return this.id;
     }
@@ -44,17 +43,21 @@ public class User extends ModelBase implements Serializable {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    //TODO - finish the @ManyToMany mapping
+    // TODO - finish the @ManyToMany mapping
+    @ManyToMany(mappedBy = "owners", cascade = CascadeType.PERSIST)
     public List<AccountBase> getAccounts() {
         return accounts;
     }
+
     public void setAccounts(List<AccountBase> accounts) {
         this.accounts = accounts;
     }
+
     public void addAccount(AccountBase a) {
         getAccounts().add(a);
     }

@@ -10,6 +10,7 @@ package com.algonquincollege.cst8277.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,7 +56,7 @@ public class PlatformRole extends ModelBase implements Serializable {
         this.roleName = roleName;
     }
 
-    @ManyToMany(mappedBy = "platformRoles")
+    @ManyToMany(mappedBy = "platformRoles", cascade = CascadeType.PERSIST)
     public List<PlatformUser> getPlatformUsers() {
         return platformUsers;
     }
