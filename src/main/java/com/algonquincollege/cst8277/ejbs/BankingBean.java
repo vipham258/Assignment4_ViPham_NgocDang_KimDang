@@ -28,6 +28,7 @@ public class BankingBean {
     public List<AccountBase> getBankAccountsFor(int accountId) {
         Query query = em.createQuery("SELECT a FROM AccountBase a where a.id LIKE : aID").setParameter("aID",
                 accountId);
+        System.out.print(query.getFirstResult());
         return query.getResultList();
     }
 

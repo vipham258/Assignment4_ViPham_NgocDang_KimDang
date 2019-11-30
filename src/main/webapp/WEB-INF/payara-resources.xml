@@ -9,5 +9,6 @@
        <property name="Password" value="password"/>
        <property name="URL" value="jdbc:h2:tcp://localhost:12345/~/banking"/>
     </jdbc-connection-pool>
+    <!--<jdbc-resource pool-name="bankingDataSource" jndi-name="jdbc/banking" />-->
     <jdbc-resource pool-name="bankingDataSource" jndi-name="java:app/jdbc/banking" />
  </resources>
