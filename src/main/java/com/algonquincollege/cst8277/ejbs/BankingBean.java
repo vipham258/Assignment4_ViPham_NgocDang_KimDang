@@ -26,12 +26,19 @@ public class BankingBean {
 
     // TODO - methods to handle CRUD for Banking entities
     public List<AccountBase> getBankAccountsFor(int accountId) {
-        Query query = em.createQuery("SELECT a FROM AccountBase a where a.id LIKE : aID").setParameter("aID",
+        Query query = em.createQuery("SELECT u FROM AccountBase u WHERE u.id = :accountID").setParameter("accountID",
                 accountId);
         System.out.print(query.getFirstResult());
         return query.getResultList();
     }
 
-    public void addBankAccount() {
+    public AccountBase addBankAccount(AccountBase newAccount) {
+        em.persist(newAccount);
+        return newAccount;
+    }
+
+    public void deleteBankAccount(int deletedAccountID) {
+        AccountBase deleteAccount = em.find(AccountBase.class, deletedAccountID);
+        em.remove(deleteAccount);
     }
 }

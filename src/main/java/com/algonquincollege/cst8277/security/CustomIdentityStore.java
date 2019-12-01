@@ -30,6 +30,8 @@ public class CustomIdentityStore implements IdentityStore {
 
     @Inject
     protected Pbkdf2PasswordHash pbAndjPasswordHash;
+//    @Resource
+//    SessionContext sc;
 
     @Override
     public CredentialValidationResult validate(Credential credential) {
@@ -37,42 +39,41 @@ public class CustomIdentityStore implements IdentityStore {
         CredentialValidationResult result = INVALID_RESULT;
 
         if (credential instanceof UsernamePasswordCredential) {
-            String callerName = ((UsernamePasswordCredential)credential).getCaller();
-            String credentialPassword = ((UsernamePasswordCredential)credential).getPasswordAsString();
+            String callerName = ((UsernamePasswordCredential) credential).getCaller();
+            String credentialPassword = ((UsernamePasswordCredential) credential).getPasswordAsString();
+//            WrappingCallerPrincipal wcp = (WrappingCallerPrincipal) sc.getCallerPrincipal();
+//            PlatformUser user = (PlatformUser) wcp.getWrapped();
             PlatformUser user = jpaHelper.findUserByName(callerName);
             if (user != null) {
                 String pwHash = user.getPwHash();
                 /*
                  * pwHash is actually a multifield String with ':' as the field separator:
-                 *   <algorithm>:<iterations>:<base64(salt)>:<base64(hash)>
+                 * <algorithm>:<iterations>:<base64(salt)>:<base64(hash)>
                  *
-                 *   Pbkdf2PasswordHash.Algorithm (String identifier)
-                 *     "PBKDF2WithHmacSHA224" - too small don't use,
-                 *     "PBKDF2WithHmacSHA256" - default,
-                 *     "PBKDF2WithHmacSHA384" - meh
-                 *     "PBKDF2WithHmacSHA512" - better security - more CPU: maybe not watch/phone, tablet Ok
+                 * Pbkdf2PasswordHash.Algorithm (String identifier) "PBKDF2WithHmacSHA224" - too
+                 * small don't use, "PBKDF2WithHmacSHA256" - default, "PBKDF2WithHmacSHA384" -
+                 * meh "PBKDF2WithHmacSHA512" - better security - more CPU: maybe not
+                 * watch/phone, tablet Ok
                  *
-                 *  Pbkdf2PasswordHash.Iterations (integer)
-                 *     1024 - minimum (too small don't use)
-                 *     2048 - default
-                 *   I have seen 20,000 up to 50,000 in production
+                 * Pbkdf2PasswordHash.Iterations (integer) 1024 - minimum (too small don't use)
+                 * 2048 - default I have seen 20,000 up to 50,000 in production
                  *
                  */
                 try {
                     boolean verified = pbAndjPasswordHash.verify(credentialPassword.toCharArray(), pwHash);
                     if (verified) {
+
                         result = new CredentialValidationResult(new WrappingCallerPrincipal(user),
-                            getRolesNamesFromPlatformRoles(user.getPlatformRoles()));
+                                getRolesNamesFromPlatformRoles(user.getPlatformRoles()));
                     }
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     // e.printStackTrace();
                 }
             }
         }
         // check if the credential was CallerOnlyCredential
         else if (credential instanceof CallerOnlyCredential) {
-            String callerName = ((CallerOnlyCredential)credential).getCaller();
+            String callerName = ((CallerOnlyCredential) credential).getCaller();
             PlatformUser user = jpaHelper.findUserByName(callerName);
             if (user != null) {
                 result = new CredentialValidationResult(callerName);
@@ -85,10 +86,7 @@ public class CustomIdentityStore implements IdentityStore {
     protected Set<String> getRolesNamesFromPlatformRoles(Set<PlatformRole> platformRoles) {
         Set<String> roleNames = emptySet();
         if (!platformRoles.isEmpty()) {
-            roleNames = platformRoles
-                .stream()
-                .map(s -> s.getRoleName())
-                .collect(Collectors.toSet());
+            roleNames = platformRoles.stream().map(s -> s.getRoleName()).collect(Collectors.toSet());
         }
         return roleNames;
     }

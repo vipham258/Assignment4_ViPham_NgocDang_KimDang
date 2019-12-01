@@ -47,6 +47,30 @@ public class CustomIdentityStoreJPAHelper {
         return platformUser;
     }
 
+//    public PlatformUser findUserByPassword(String callerName, String password) {
+//        // the nickname of this Hash algorithm is 'PBandJ' (Peanut-Butter-And-Jam, like
+//        // the sandwich!)
+//        Map<String, String> pbAndjProperties = new HashMap<>();
+//        pbAndjProperties.put(PROPERTY_ALGORITHM, DEFAULT_PROPERTY_ALGORITHM);
+//        pbAndjProperties.put(PROPERTY_ITERATIONS, DEFAULT_PROPERTY_ITERATIONS);
+//        pbAndjProperties.put(PROPERTY_SALTSIZE, DEFAULT_SALT_SIZE);
+//        pbAndjProperties.put(PROPERTY_KEYSIZE, DEFAULT_KEY_SIZE);
+//        pbAndjPasswordHash.initialize(pbAndjProperties);
+//        PlatformUser platformUser = new PlatformUser();
+////        if (USER_CALLER.equalsIgnoreCase(callerName)) {
+////            platformUser.setUsername(USER_CALLER);
+////            String pwHash = pbAndjPasswordHash.generate(USER_PASSWD.toCharArray());
+////            platformUser.setPwHash(pwHash);
+////        }
+//        if (DEFAULT_ADMIN_USER.equalsIgnoreCase(callerName)) {
+//            platformUser.setUsername(DEFAULT_ADMIN_USER);
+//            String pwHash = pbAndjPasswordHash.generate(ADMIN_USER_PASSWORD.toCharArray());
+//            platformUser.setPwHash(pwHash);
+//
+//        }
+//        return platformUser;
+//    }
+
     public Set<PlatformRole> findRolesForUser(String username) {
         Set<PlatformRole> foundRoles = emptySet();
         PlatformUser platformUser = findUserByName(username);

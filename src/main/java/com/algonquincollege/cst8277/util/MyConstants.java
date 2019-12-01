@@ -53,7 +53,7 @@ public interface MyConstants {
     public static final String DEFAULT_ADMIN_USER_PROPNAME = "default-admin-user";
     public static final String DEFAULT_ADMIN_USER = "admin";
     public static final String DEFAULT_ADMIN_USER_PASSWORD_PROPNAME = "default-admin-user-password";
-
+    public static final String ADMIN_USER_PASSWORD = "12345";
     // JPA constants
     public static final String PU_NAME = "assignment4-PU";
     public static final String PLATFORM_USER_TABLE_NAME = "PLATFORM_USER";

@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-
 /**
  * The persistent class for the ACCOUNT database table.
  * 
@@ -22,21 +21,23 @@ import javax.persistence.OneToOne;
 @Entity
 @DiscriminatorValue(value = "I")
 public class InvestmentAccount extends AccountBase implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	private Portfolio portfolio;
+    private static final long serialVersionUID = 1L;
 
-	public InvestmentAccount() {
-	}
+    private Portfolio portfolio;
 
-	//uni-directional one-to-one association to Portfolio
-	//TODO - finish the @OneToOne mapping
-	public Portfolio getPortfolio() {
-		return this.portfolio;
-	}
+    public InvestmentAccount() {
+    }
 
-	public void setPortfolio(Portfolio portfolio) {
-		this.portfolio = portfolio;
-	}
+    // uni-directional one-to-one association to Portfolio
+    // TODO - finish the @OneToOne mapping
+    @OneToOne
+    @JoinColumn(name = "PORTFOLIO_ID")
+    public Portfolio getPortfolio() {
+        return this.portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
 
 }
