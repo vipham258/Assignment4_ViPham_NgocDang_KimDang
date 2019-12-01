@@ -20,7 +20,13 @@ import org.glassfish.soteria.WrappingCallerPrincipal;
 
 import com.algonquincollege.cst8277.models.PlatformRole;
 import com.algonquincollege.cst8277.models.PlatformUser;
-
+/**
+ * File: CustomIdentityStore.java
+ * Course materials (19F) CST 8277
+ * validating a caller's credentials
+ * @author Vi Pham, Ngoc Dang, Ngan Dang
+ * @date Nov 2019
+ */
 @ApplicationScoped
 @Default
 public class CustomIdentityStore implements IdentityStore {
@@ -33,6 +39,10 @@ public class CustomIdentityStore implements IdentityStore {
 //    @Resource
 //    SessionContext sc;
 
+    /**
+     * {@inheritDoc}
+     * @return result
+     */
     @Override
     public CredentialValidationResult validate(Credential credential) {
 
@@ -82,6 +92,11 @@ public class CustomIdentityStore implements IdentityStore {
 
         return result;
     }
+    /**
+     * get Roles Nams From Platform Roles if platform Roles is not empty
+     * @param platformRoles
+     * @return roleNames
+     */
 
     protected Set<String> getRolesNamesFromPlatformRoles(Set<PlatformRole> platformRoles) {
         Set<String> roleNames = emptySet();

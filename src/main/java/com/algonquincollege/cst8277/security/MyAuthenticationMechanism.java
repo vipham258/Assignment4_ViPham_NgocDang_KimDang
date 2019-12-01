@@ -17,13 +17,22 @@ import javax.security.enterprise.identitystore.IdentityStore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.HttpHeaders;
-
+/**
+ * The class MyAuthenticationMechanism implements HttpAuthenticationMechanism
+ * obtaining a caller's credentials in some way, using the HTTP protocol where necessary.
+ * @author Vi Pham, Ngoc Dang, Ngan Dang
+ * @date Nov 2019
+ */
 @ApplicationScoped
 public class MyAuthenticationMechanism implements HttpAuthenticationMechanism {
 
     @Inject
     private IdentityStore identityStore;
 
+    /**
+     * {@inheritDoc}
+     * @return result check if authHeader is not null and if name and password is not null
+     */
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthenticationException {
 
