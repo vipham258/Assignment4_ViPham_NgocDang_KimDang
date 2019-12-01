@@ -2,8 +2,8 @@
  * File: Asset.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
- *
- * @date 2019 10
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ * @date 2019 12 01
  */
 package com.algonquincollege.cst8277.models;
 
@@ -41,6 +41,10 @@ public class Asset extends ModelBase implements Serializable {
         super();
     }
 
+    /**
+     * get id
+     * @return id
+     */
     @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +54,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * get name
      * @return the name
      */
     @Column(name = "ASSET_NAME")
@@ -58,6 +63,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * set name
      * @param name the name to set
      */
     public void setName(String name) {
@@ -65,6 +71,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * get units
      * @return the units
      */
     public int getUnits() {
@@ -72,6 +79,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * set units
      * @param units the units to set
      */
     public void setUnits(int units) {
@@ -79,6 +87,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * get price
      * @return the price
      */
     public double getPrice() {
@@ -86,6 +95,7 @@ public class Asset extends ModelBase implements Serializable {
     }
 
     /**
+     * set price
      * @param price the price to set
      */
     public void setPrice(double price) {
@@ -98,29 +108,53 @@ public class Asset extends ModelBase implements Serializable {
         return this.currentValue;
     }
 
+    /**
+     * set balance
+     * @param currentValue
+     */
     public void setBalance(double currentValue) {
         this.currentValue = currentValue;
     }
 
+    /**
+     * current value
+     * @return current value
+     */
     public double currentValue() {
         return currentValue;
     }
 
+    /**
+     * persist current value
+     * make sure asset's currentValue is up-to-date in Db
+     * executed before the EntityManager persist operation is actully executed
+     */
     // make sure asset's currentValue is up-to-date in Db
     @PrePersist
     public void onPersist() {
         calculateCurrentValue();
     }
 
+    /**
+     * update current value
+     * executed before the UPDATE sql is executed 
+     */
     @PreUpdate
     public void onUpdate() {
         calculateCurrentValue();
     }
 
+    /**
+     * calculate the current value price * units
+     */
     protected void calculateCurrentValue() {
         setBalance(price * units);
     }
 
+    /**
+     * get owner
+     * @return owner
+     */
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "PORTFOLIO_ID")
@@ -128,6 +162,10 @@ public class Asset extends ModelBase implements Serializable {
         return owner;
     }
 
+    /**
+     * set owner
+     * @param owner
+     */
     public void setOwner(Portfolio owner) {
         this.owner = owner;
     }
