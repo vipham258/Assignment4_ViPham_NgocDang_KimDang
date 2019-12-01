@@ -1,3 +1,10 @@
+/**************************
+ * File: AssetResource.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 12 01
+ */
 package com.algonquincollege.cst8277.rest;
 
 import java.util.List;
@@ -25,6 +32,11 @@ public class AssetResource {
     @EJB
     protected AssetBean bean;
 
+    /**
+    * Description: Retrieve an asset by id
+    * @param Asset Id
+    * @return OK if Asset is existed
+    */
     @GET
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,6 +46,11 @@ public class AssetResource {
         return Response.ok(listResult).build();
     }
 
+    /**
+    * Description: Create an asset
+    * @param  Asset Id, new temp
+    * @return OK if an asset is successful created
+    */
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -44,6 +61,11 @@ public class AssetResource {
         return Response.ok(add).build();
     }
 
+    /**
+     * Description: Delete an asset by Id
+     * @param Asset Id
+     * @return OK if an asset is successful deleted
+     */
     @DELETE
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -53,7 +75,12 @@ public class AssetResource {
         Asset delete = bean.deleteAsset(id);
         return Response.ok(delete).build();
     }
-
+    
+    /**
+     * Description: Update an asset by Id
+     * @param id, asset ti be updated
+     * @return OK if an asset is successful updated
+     */
     @PUT
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)

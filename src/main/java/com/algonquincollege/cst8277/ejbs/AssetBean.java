@@ -3,7 +3,7 @@
  * Course materials (19F) CST 8277
  * @author Vi Pham
  *
- * @date 2019 11
+ * @date 2019 11 30
  */
 package com.algonquincollege.cst8277.ejbs;
 
@@ -24,6 +24,11 @@ public class AssetBean {
     @PersistenceContext(unitName = PU_NAME)
     protected EntityManager em;
 
+    /**
+    * Description: a list of asset from Asset table 
+    * @param Asset Id
+    * @return a list of asset
+    */
     // TODO - methods to handle CRUD for User entity
     public List<Asset> getAsset(int id) {
         Query query = em.createQuery("SELECT u FROM Asset u WHERE u.id = :tempID").setParameter("tempID", id);
@@ -31,17 +36,32 @@ public class AssetBean {
         return query.getResultList();
     }
 
+    /**
+    * Description: Add a new Asset
+    * @param a new Asset
+    * @return a new Asset
+    */
     public Asset addAsset(Asset newAsset) {
         em.persist(newAsset);
         return newAsset;
     }
 
+    /**
+    * Description: Delete a Asset by Id
+    * @param Asset Id
+    * @return deleted Asset
+    */
     public Asset deleteAsset(int deletedID) {
         Asset delete = em.find(Asset.class, deletedID);
         em.remove(delete);
         return delete;
     }
 
+    /**
+     * Description: Update a Asset by Id
+     * @param Asset Id, asset to be updated
+     * @return updated Asset
+     */
     public Asset updateAsset(int id, Asset assetUpdated) {
         em.merge(assetUpdated);
         return assetUpdated;

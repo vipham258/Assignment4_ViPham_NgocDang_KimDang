@@ -27,6 +27,8 @@ public class BankingBean {
     
     /**
     * Description: a list of all accounts from AccountBase table 
+    * @param account Id
+    * @return a list of bank account
     */
     public List<AccountBase> getBankAccountsFor(int accountId) {
         Query query = em.createQuery("SELECT u FROM AccountBase u WHERE u.id = :accountID").setParameter("accountID",
@@ -37,8 +39,8 @@ public class BankingBean {
 
     /**
      * Description: Add a new bank account
-     * @param newAccount
-     * @return newAccount 
+     * @param a new Account
+     * @return a new Account 
      */
     public AccountBase addBankAccount(AccountBase newAccount) {
         em.persist(newAccount);
@@ -47,8 +49,9 @@ public class BankingBean {
 
 
     /**
-     * Description: Delete bank account
-     * @param deletedAccountID
+     * Description: Delete a bank account by Id
+     * @param Account Id
+     * @return deleted Acccount
      */
     public AccountBase deleteBankAccount(int deletedAccountID) {
 
@@ -57,6 +60,11 @@ public class BankingBean {
         return deleteAccount;
     }
 
+    /**
+     * Description: Update a bank account by Id
+     * @param Account Id, an Account to be updated
+     * @return updated Acccount
+     */
     public AccountBase updateBankAccount(int id, AccountBase accountUpdated) {
         // AccountBase ab = em.find(AccountBase.class, id);
         em.merge(accountUpdated);
