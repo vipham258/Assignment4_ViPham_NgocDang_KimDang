@@ -45,7 +45,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 })
 @Entity(name = "AccountBase")
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "ACCOUNT")
 @DiscriminatorColumn(name = "ACCOUNT_TYPE", length = 1)
