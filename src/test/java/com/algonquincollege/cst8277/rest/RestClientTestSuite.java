@@ -157,7 +157,7 @@ public class RestClientTestSuite {
                 .port(8080).build();
         webTarget = client.register(feature).target(uri).path("user/4");
         Response response = webTarget.request(APPLICATION_JSON).get();
-        assertThat(response.getMediaType(), is(not(MediaType.APPLICATION_XML)));
+        assertThat(response.getStatus(), is(200));
 //        SavingsAccount account = response.readEntity(SavingsAccount.class);
 //        assertEquals(1.2, account.getBalance(), 0.0);
     }
