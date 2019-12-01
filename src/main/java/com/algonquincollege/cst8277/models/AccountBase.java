@@ -5,6 +5,12 @@
  *
  * @date 2019 10
  */
+/**
+ * @author Vi Pham, Ngoc Dang, Ngan Dang
+ * @date: Nov 2019
+ * Description: AccountBase class extends ModelBase class which is super class of SavingAccount, Investment, Chequing classes
+ * 
+ * */
 package com.algonquincollege.cst8277.models;
 
 import java.util.List;
@@ -52,18 +58,30 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public abstract class AccountBase extends ModelBase {
 
     // I moved balance from ModelBase to here
+    /**An account balance*/
     protected double balance;
-
+    
+    /**A List of owners*/
     protected List<User> owners;
 
+    /**
+     * Description: getBalance
+     * @return balance
+     */
     public double getBalance() {
         return balance;
     }
-
+    /**
+     * Description: setBalance
+     * @param: balance
+     */
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
+    /**
+     * Description: getId
+     * @return id
+     */
     @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,7 +89,10 @@ public abstract class AccountBase extends ModelBase {
     public int getId() {
         return this.id;
     }
-
+    /**
+     * Description: getOwners
+     * @return list of owners
+     */
     // TODO - finish the @ManyToMany mapping
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "USER_ACCOUNT_ACCOUNT", joinColumns = { @JoinColumn(name = "ACCOUNT_ID") }, inverseJoinColumns = {
@@ -79,11 +100,17 @@ public abstract class AccountBase extends ModelBase {
     public List<User> getOwners() {
         return owners;
     }
-
+    /**
+     * Description: setOwners
+     * @param owners
+     */
     public void setOwners(List<User> owners) {
         this.owners = owners;
     }
-
+    /**
+     * Description: get owners and add new owners
+     * @param owners
+     */
     public void addOwner(User owner) {
         getOwners().add(owner);
     }
