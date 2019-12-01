@@ -35,7 +35,7 @@ public class RestConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<>();
-        //classes.add(UserResource.class);
+        classes.add(UserResource.class);
         classes.add(AccountResource.class);
         classes.add(JacksonFeature.class);
         return classes;

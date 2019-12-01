@@ -40,6 +40,11 @@ public class User extends ModelBase implements Serializable {
         return this.id;
     }
 
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

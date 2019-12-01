@@ -52,7 +52,7 @@ public abstract class AccountBase extends ModelBase {
 
     // I moved balance from ModelBase to here
     protected double balance;
-
+    // protected int id;
     protected List<User> owners;
 
     public double getBalance() {
@@ -69,6 +69,11 @@ public abstract class AccountBase extends ModelBase {
     @Column(name = "ACCOUNT_ID")
     public int getId() {
         return this.id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     // TODO - finish the @ManyToMany mapping
