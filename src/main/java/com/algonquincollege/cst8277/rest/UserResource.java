@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.algonquincollege.cst8277.ejbs.UserBean;
-import com.algonquincollege.cst8277.models.AccountBase;
 import com.algonquincollege.cst8277.models.User;
 import com.algonquincollege.cst8277.util.MyConstants;
 
@@ -60,9 +59,9 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response updateAccount(@PathParam("id") int id, AccountBase accountToBeUpdated) {
+    public Response updateUser(@PathParam("id") int id, User userToBeUpdated) {
         // accountToBeUpdated.setId(id);
-        AccountBase account = bean.updateBankAccount(id, accountToBeUpdated);
-        return Response.ok(account).build();
+        User user = bean.updateUser(id, userToBeUpdated);
+        return Response.ok(user).build();
     }
 }

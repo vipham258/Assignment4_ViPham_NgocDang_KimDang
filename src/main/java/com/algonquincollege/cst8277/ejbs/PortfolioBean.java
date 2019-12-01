@@ -13,7 +13,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -43,30 +42,8 @@ public class PortfolioBean {
         return delete;
     }
 
-    public Portfolio updatePortfolio(int id, Portfolio accountUpdated) {
-        Portfolio ab = em.find(Portfolio.class, id);
-        // List<AccountBase> accountList = getBankAccountsFor(id);
-        // accountList.get(0).setVersion(accountUpdated.getVersion());
-//        accountList.get(0).setBalance(accountUpdated.getBalance());
-//        accountList.get(0).setCreateDate(accountUpdated.getCreateDate());
-//        accountList.get(0).setUpdateDate(accountUpdated.getUpdateDate());
-//        accountList.get(0).setOwners(accountUpdated.getOwners());
-        boolean success = false;
-        while (!success) {
-            try {
-                // start transaction, read entity, update it and commit
-                ab.setVersion(accountUpdated.getVersion());
-//                ab.setBalance(accountUpdated.getBalance());
-//                ab.setCreateDate(accountUpdated.getCreateDate());
-//                ab.setUpdateDate(accountUpdated.getUpdateDate());
-//                ab.setOwners(accountUpdated.getOwners());
-//                em.merge(ab);
-                success = true;
-            } catch (OptimisticLockException ex) {
-                // log your error
-            }
-        }
-
-        return ab;
+    public Portfolio updatePortfolio(int id, Portfolio portfolioUpdated) {
+        em.merge(portfolioUpdated);
+        return portfolioUpdated;
     }
 }

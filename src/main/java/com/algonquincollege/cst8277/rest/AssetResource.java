@@ -60,9 +60,7 @@ public class AssetResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateAsset(@PathParam("id") int id, Asset assetToBeUpdated) {
-        // accountToBeUpdated.setId(id);
-//        AccountBase account = bean.updateBankAccount(id, accountToBeUpdated);
-//        return Response.ok(account).build();
-        return null;
+        Asset account = bean.updateAsset(id, assetToBeUpdated);
+        return Response.ok(account).build();
     }
 }

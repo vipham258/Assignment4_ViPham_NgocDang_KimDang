@@ -13,7 +13,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -44,29 +43,7 @@ public class AssetBean {
     }
 
     public Asset updateAsset(int id, Asset assetUpdated) {
-        Asset ab = em.find(Asset.class, id);
-        // List<AccountBase> accountList = getBankAccountsFor(id);
-        // accountList.get(0).setVersion(accountUpdated.getVersion());
-//        accountList.get(0).setBalance(accountUpdated.getBalance());
-//        accountList.get(0).setCreateDate(accountUpdated.getCreateDate());
-//        accountList.get(0).setUpdateDate(accountUpdated.getUpdateDate());
-//        accountList.get(0).setOwners(accountUpdated.getOwners());
-        boolean success = false;
-        while (!success) {
-            try {
-                // start transaction, read entity, update it and commit
-                ab.setVersion(assetUpdated.getVersion());
-//                ab.setBalance(accountUpdated.getBalance());
-//                ab.setCreateDate(accountUpdated.getCreateDate());
-//                ab.setUpdateDate(accountUpdated.getUpdateDate());
-//                ab.setOwners(accountUpdated.getOwners());
-//                em.merge(ab);
-                success = true;
-            } catch (OptimisticLockException ex) {
-                // log your error
-            }
-        }
-
-        return ab;
+        em.merge(assetUpdated);
+        return assetUpdated;
     }
 }
