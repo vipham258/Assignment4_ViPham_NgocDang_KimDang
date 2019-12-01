@@ -27,20 +27,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonTypeInfo(
-
-        use = JsonTypeInfo.Id.NAME,
-
-        include = JsonTypeInfo.As.PROPERTY,
-
-        property = "type")
-
-@JsonSubTypes({
-
-        @Type(value = ChequingAccount.class, name = "C"),
-
-        @Type(value = InvestmentAccount.class, name = "I"),
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = ChequingAccount.class, name = "C"), @Type(value = InvestmentAccount.class, name = "I"),
         @Type(value = SavingsAccount.class, name = "S")
 
 })
