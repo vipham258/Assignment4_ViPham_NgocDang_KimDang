@@ -1,3 +1,10 @@
+/**************************
+ * File: UserResource.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 12 01
+ */
 package com.algonquincollege.cst8277.rest;
 
 import java.util.List;
@@ -25,6 +32,11 @@ public class UserResource {
     @EJB
     protected UserBean bean;
 
+    /**
+    * Description: Retrieve a User by id
+    * @param User Id
+    * @return OK if User is existed
+    */
     @GET
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,6 +46,11 @@ public class UserResource {
         return Response.ok(listResult).build();
     }
 
+    /**
+    * Description: Create a new User
+    * @param User Id, new User Temp
+    * @return OK if User is successful created
+    */
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -44,6 +61,11 @@ public class UserResource {
         return Response.ok(add).build();
     }
 
+    /**
+    * Description: Delelte a User by Id
+    * @param User Id
+    * @return OK if User is successful deleted
+    */
     @DELETE
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -53,7 +75,12 @@ public class UserResource {
         User delete = bean.deleteUser(id);
         return Response.ok(delete).build();
     }
-
+    
+    /**
+    * Description: Update a User by Id
+    * @param User Id, User to be updated
+    * @return OK if User is successful updated
+    */
     @PUT
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)

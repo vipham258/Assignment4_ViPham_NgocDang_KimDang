@@ -2,8 +2,9 @@
  * File: RestClientTestSuite.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
  *
- * @date 2019 10
+ * @date 2019 12 01
  */
 package com.algonquincollege.cst8277.rest;
 
@@ -47,6 +48,11 @@ public class RestClientTestSuite {
         assertThat(response.getStatus(), is(200));
     }
 
+    /**
+    * Description: Send GET messages to RESTful endpoints for the Account
+    * 
+    * @result successfully get an account with id = 1
+    */
     @Test
     public void test_02_testAccount() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
@@ -60,6 +66,11 @@ public class RestClientTestSuite {
         assertThat(response.getStatus(), is(200));
     }
 
+    /**
+    * Description: Send GET messages to RESTful endpoints for the User
+    * 
+    * @result successfully get an user with id = 1
+    */
     @Test
     public void test_03_testUser() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
@@ -70,7 +81,12 @@ public class RestClientTestSuite {
         Response response = webTarget.request(APPLICATION_JSON).get();
         assertThat(response.getMediaType(), is(not(MediaType.APPLICATION_XML)));
     }
-
+    
+    /**
+    * Description: Send GET messages to RESTful endpoints for the Portfolio
+    * 
+    * @result successfully get a Portfolio with id = 1
+    */
     @Test
     public void test_04_testPortfolio() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
@@ -82,6 +98,11 @@ public class RestClientTestSuite {
         assertThat(response.getStatus(), is(200));
     }
 
+    /**
+    * Description: Send GET messages to RESTful endpoints for the Asset
+    * 
+    * @result successfully get a Asset with id = 1
+    */
     @Test
     public void test_05_tesAsset() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
