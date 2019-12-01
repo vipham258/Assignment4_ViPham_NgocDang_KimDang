@@ -42,19 +42,6 @@ public class SavingsAccount extends AccountBase implements Serializable {
     * @param savingRate
     */
 
-    private static final long serialVersionUID = 1L;
-
-    public SavingsAccount() {
-
-    }
-
-    private double savingRate;
-
-    @Column(name = "RATE")
-    public double getSavingRate() {
-        return savingRate;
-    }
-
     public void setSavingRate(double savingRate) {
         this.savingRate = savingRate;
     }
