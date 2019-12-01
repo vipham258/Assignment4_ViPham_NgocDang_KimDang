@@ -2,7 +2,6 @@
  * File: CustomIdentityStoreJPAHelper.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
- *
  * @date 2019 10
  */
 package com.algonquincollege.cst8277.security;
@@ -25,7 +24,10 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 import com.algonquincollege.cst8277.models.PlatformRole;
 import com.algonquincollege.cst8277.models.PlatformUser;
-
+/**
+ * @author Vi Pham, Ngoc Dang, Ngan Dang
+ * @date Nov 2019
+ */
 @Singleton
 public class CustomIdentityStoreJPAHelper {
 
@@ -35,6 +37,11 @@ public class CustomIdentityStoreJPAHelper {
     @Inject
     protected Pbkdf2PasswordHash pbAndjPasswordHash;
 
+    /**
+     * find users by name
+     * @param username
+     * @return platformUser
+     */
     public PlatformUser findUserByName(String username) {
         PlatformUser platformUser = null;
         try {
@@ -70,7 +77,11 @@ public class CustomIdentityStoreJPAHelper {
 //        }
 //        return platformUser;
 //    }
-
+    /**
+     * find roles for user
+     * @param username
+     * @return roles is found
+     */
     public Set<PlatformRole> findRolesForUser(String username) {
         Set<PlatformRole> foundRoles = emptySet();
         PlatformUser platformUser = findUserByName(username);
@@ -79,12 +90,18 @@ public class CustomIdentityStoreJPAHelper {
         }
         return foundRoles;
     }
-
+    /**
+     * save platform user
+     * @param platformUser
+     */
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void savePlatformUser(PlatformUser platformUser) {
         em.persist(platformUser);
     }
-
+    /**
+     * save platform role
+     * @param platformRole
+     */
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void savePlatformRole(PlatformRole platformRole) {
         em.persist(platformRole);
