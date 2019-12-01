@@ -34,12 +34,20 @@ public class PortfolioResource {
         return Response.ok(listResult).build();
     }
 
+    @GET
+    @Path("/balance/{b}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPortfolioByBalance(@PathParam("b") double b) {
+        List<Portfolio> accounts = bean.getPortfolioByBalance(b);
+        return Response.ok(accounts).build();
+    }
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response addPortfolio(@PathParam("id") int id, Portfolio newTemp) {
+    public Response addPortfolio(Portfolio newTemp) {
         Portfolio add = bean.addPortfolio(newTemp);
         return Response.ok(add).build();
     }

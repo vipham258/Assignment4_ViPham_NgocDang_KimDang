@@ -34,12 +34,20 @@ public class AccountResource {
         return Response.ok(accounts).build();
     }
 
+    @GET
+    @Path("/balance/{b}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBankAccounts(@PathParam("b") double b) {
+        List<AccountBase> accounts = bean.getBankAccountsByBalance(b);
+        return Response.ok(accounts).build();
+    }
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response addAccount(@PathParam("id") int id, AccountBase newAccountToBeCreated) {
+    public Response addAccount(AccountBase newAccountToBeCreated) {
         AccountBase account = bean.addBankAccount(newAccountToBeCreated);
         return Response.ok(account).build();
     }

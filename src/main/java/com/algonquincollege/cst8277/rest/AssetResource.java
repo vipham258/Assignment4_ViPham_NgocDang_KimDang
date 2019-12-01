@@ -34,12 +34,20 @@ public class AssetResource {
         return Response.ok(listResult).build();
     }
 
+    @GET
+    @Path("/name/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAssetsByName(@PathParam("name") String name) {
+        List<Asset> listResult = bean.getAssetByName(name);
+        return Response.ok(listResult).build();
+    }
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response addAsset(@PathParam("id") int id, Asset newTemp) {
+    public Response addAsset(Asset newTemp) {
         Asset add = bean.addAsset(newTemp);
         return Response.ok(add).build();
     }

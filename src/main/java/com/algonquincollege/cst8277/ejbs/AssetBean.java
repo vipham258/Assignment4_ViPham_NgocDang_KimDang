@@ -31,6 +31,12 @@ public class AssetBean {
         return query.getResultList();
     }
 
+    public List<Asset> getAssetByName(String name) {
+        Query query = em.createQuery("SELECT u FROM Asset u WHERE u.name = :name").setParameter("name", name);
+        System.out.print(query.getFirstResult());
+        return query.getResultList();
+    }
+
     public Asset addAsset(Asset newAsset) {
         em.persist(newAsset);
         return newAsset;

@@ -34,12 +34,20 @@ public class UserResource {
         return Response.ok(listResult).build();
     }
 
+    @GET
+    @Path("/name/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserByName(@PathParam("name") String name) {
+        List<User> listResult = bean.getUsersByName(name);
+        return Response.ok(listResult).build();
+    }
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response addUser(@PathParam("id") int id, User newTemp) {
+    public Response addUser(User newTemp) {
         User add = bean.addUser(newTemp);
         return Response.ok(add).build();
     }

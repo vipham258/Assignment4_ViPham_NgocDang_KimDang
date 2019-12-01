@@ -32,6 +32,12 @@ public class BankingBean {
         return query.getResultList();
     }
 
+    public List<AccountBase> getBankAccountsByBalance(double b) {
+        Query query = em.createQuery("SELECT u FROM AccountBase u WHERE u.balance = :b").setParameter("b", b);
+        System.out.print(query.getFirstResult());
+        return query.getResultList();
+    }
+
     public AccountBase addBankAccount(AccountBase newAccount) {
         em.persist(newAccount);
         return newAccount;

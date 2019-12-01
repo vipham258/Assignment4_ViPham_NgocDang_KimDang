@@ -31,6 +31,12 @@ public class UserBean {
         return query.getResultList();
     }
 
+    public List<User> getUsersByName(String name) {
+        Query query = em.createQuery("SELECT u FROM User u WHERE u.name = :name").setParameter("name", name);
+        System.out.print(query.getFirstResult());
+        return query.getResultList();
+    }
+
     public User addUser(User newUser) {
         em.persist(newUser);
         return newUser;

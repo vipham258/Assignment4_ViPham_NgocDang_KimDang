@@ -31,6 +31,12 @@ public class PortfolioBean {
         return query.getResultList();
     }
 
+    public List<Portfolio> getPortfolioByBalance(double b) {
+        Query query = em.createQuery("SELECT u FROM Portfolio u WHERE u.balance = :b").setParameter("b", b);
+        System.out.print(query.getFirstResult());
+        return query.getResultList();
+    }
+
     public Portfolio addPortfolio(Portfolio newPortfolio) {
         em.persist(newPortfolio);
         return newPortfolio;
