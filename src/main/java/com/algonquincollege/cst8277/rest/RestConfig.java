@@ -39,6 +39,7 @@ public class RestConfig extends Application {
         classes.add(AccountResource.class);
         classes.add(JacksonFeature.class);
         classes.add(PortfolioResource.class);
+        classes.add(AssetResource.class);
         return classes;
     }
 }

@@ -52,6 +52,7 @@ public class Asset extends ModelBase implements Serializable {
     /**
      * @return the name
      */
+    @Column(name = "ASSET_NAME")
     public String getName() {
         return name;
     }
