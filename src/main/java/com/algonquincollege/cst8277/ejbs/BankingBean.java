@@ -45,12 +45,43 @@ public class BankingBean {
         return newAccount;
     }
 
+
     /**
      * Description: Delete bank account
      * @param deletedAccountID
      */
-    public void deleteBankAccount(int deletedAccountID) {
+    public AccountBase deleteBankAccount(int deletedAccountID) {
+
         AccountBase deleteAccount = em.find(AccountBase.class, deletedAccountID);
         em.remove(deleteAccount);
+        return deleteAccount;
+    }
+
+    public AccountBase updateBankAccount(int id, AccountBase accountUpdated) {
+        // AccountBase ab = em.find(AccountBase.class, id);
+        em.merge(accountUpdated);
+//        // List<AccountBase> accountList = getBankAccountsFor(id);
+//        // accountList.get(0).setVersion(accountUpdated.getVersion());
+////        accountList.get(0).setBalance(accountUpdated.getBalance());
+////        accountList.get(0).setCreateDate(accountUpdated.getCreateDate());
+////        accountList.get(0).setUpdateDate(accountUpdated.getUpdateDate());
+////        accountList.get(0).setOwners(accountUpdated.getOwners());
+//        boolean success = false;
+//        while (!success) {
+//            try {
+//                // start transaction, read entity, update it and commit
+//                ab.setVersion(accountUpdated.getVersion());
+////                ab.setBalance(accountUpdated.getBalance());
+////                ab.setCreateDate(accountUpdated.getCreateDate());
+////                ab.setUpdateDate(accountUpdated.getUpdateDate());
+////                ab.setOwners(accountUpdated.getOwners());
+////                em.merge(ab);
+//                success = true;
+//            } catch (OptimisticLockException ex) {
+//                // log your error
+//            }
+//        }
+
+        return accountUpdated;
     }
 }

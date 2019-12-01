@@ -27,25 +27,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonTypeInfo(
-
-        use = JsonTypeInfo.Id.NAME,
-
-        include = JsonTypeInfo.As.PROPERTY,
-
-        property = "type")
-
-@JsonSubTypes({
-
-        @Type(value = ChequingAccount.class, name = "C"),
-
-        @Type(value = InvestmentAccount.class, name = "I"),
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = ChequingAccount.class, name = "C"), @Type(value = InvestmentAccount.class, name = "I"),
         @Type(value = SavingsAccount.class, name = "S")
 
 })
 @Entity(name = "AccountBase")
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "ACCOUNT")
 @DiscriminatorColumn(name = "ACCOUNT_TYPE", length = 1)
@@ -53,7 +40,7 @@ public abstract class AccountBase extends ModelBase {
 
     // I moved balance from ModelBase to here
     protected double balance;
-
+    // protected int id;
     protected List<User> owners;
 
     public double getBalance() {
@@ -70,6 +57,11 @@ public abstract class AccountBase extends ModelBase {
     @Column(name = "ACCOUNT_ID")
     public int getId() {
         return this.id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     // TODO - finish the @ManyToMany mapping

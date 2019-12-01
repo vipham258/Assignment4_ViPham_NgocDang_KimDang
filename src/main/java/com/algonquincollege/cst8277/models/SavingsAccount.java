@@ -14,7 +14,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-
 /**
  * The persistent class for the ACCOUNT database table.
  * 
@@ -22,6 +21,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value = "S")
 public class SavingsAccount extends AccountBase implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	private double savingRate;
@@ -41,8 +41,22 @@ public class SavingsAccount extends AccountBase implements Serializable {
     * 
     * @param savingRate
     */
+
+    private static final long serialVersionUID = 1L;
+
+    public SavingsAccount() {
+
+    }
+
+    private double savingRate;
+
+    @Column(name = "RATE")
+    public double getSavingRate() {
+        return savingRate;
+    }
+
     public void setSavingRate(double savingRate) {
         this.savingRate = savingRate;
     }
-	
+
 }
