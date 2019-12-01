@@ -19,7 +19,7 @@ import com.algonquincollege.cst8277.ejbs.AssetBean;
 import com.algonquincollege.cst8277.models.Asset;
 import com.algonquincollege.cst8277.util.MyConstants;
 
-@Path("assetfolio")
+@Path("asset")
 public class AssetResource {
 
     @EJB

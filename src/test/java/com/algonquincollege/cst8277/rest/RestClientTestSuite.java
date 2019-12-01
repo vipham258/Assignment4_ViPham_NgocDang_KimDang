@@ -48,7 +48,7 @@ public class RestClientTestSuite {
     }
 
     @Test
-    public void test_02_testGetAccount() {
+    public void test_02_testAccount() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
         Client client = ClientBuilder.newClient();
         // URI uri =
@@ -61,7 +61,7 @@ public class RestClientTestSuite {
     }
 
     @Test
-    public void test_03_testGetUser() {
+    public void test_03_testUser() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
         Client client = ClientBuilder.newClient();
         URI uri = UriBuilder.fromUri(APPLICATION_NAME + APPLICATION_API_VERSION).scheme("http").host("localhost")
@@ -72,7 +72,7 @@ public class RestClientTestSuite {
     }
 
     @Test
-    public void test_04_testGetPortfolio() {
+    public void test_04_testPortfolio() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
         Client client = ClientBuilder.newClient();
         URI uri = UriBuilder.fromUri(APPLICATION_NAME + APPLICATION_API_VERSION).scheme("http").host("localhost")
@@ -83,12 +83,12 @@ public class RestClientTestSuite {
     }
 
     @Test
-    public void test_05_testGetAsset() {
+    public void test_05_tesAsset() {
         HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("admin", "admin");
         Client client = ClientBuilder.newClient();
         URI uri = UriBuilder.fromUri(APPLICATION_NAME + APPLICATION_API_VERSION).scheme("http").host("localhost")
                 .port(8080).build();
-        WebTarget webTarget = client.register(feature).target(uri).path("assetfolio/1");
+        WebTarget webTarget = client.register(feature).target(uri).path("asset/1");
         Response response = webTarget.request(APPLICATION_JSON).get();
         assertThat(response.getStatus(), is(200));
     }
@@ -114,7 +114,7 @@ public class RestClientTestSuite {
         // UriBuilder.fromUri("").scheme("http").host("localhost").port(8080).build();
         URI uri = UriBuilder.fromUri(APPLICATION_NAME + APPLICATION_API_VERSION).scheme("http").host("localhost")
                 .port(8080).build();
-        webTarget = client.register(feature).target(uri).path("assetfolio/1");
+        webTarget = client.register(feature).target(uri).path("asset/1");
         Response response = webTarget.request(APPLICATION_JSON).delete();
         assertTrue(MediaType.APPLICATION_JSON_TYPE.isCompatible(response.getMediaType()));
     }
