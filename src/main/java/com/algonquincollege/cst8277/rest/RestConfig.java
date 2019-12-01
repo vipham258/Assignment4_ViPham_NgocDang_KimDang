@@ -1,3 +1,10 @@
+/**************************
+ * File: RestConfig.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 11 30
+ */
 package com.algonquincollege.cst8277.rest;
 
 import static com.algonquincollege.cst8277.util.MyConstants.ADMIN_ROLE;
