@@ -71,10 +71,9 @@ public class UserBean {
      * Description: Update a User by Id
      * 
      * @param User id, user need to be updated
-     * @return updated User
      */
-    public User updateUser(int id, User userUpdated) {
-        em.merge(userUpdated);
-        return userUpdated;
+    public void updateUser(int id, User userUpdated) {
+        User ab = getUsersFor(id).get(0);
+        ab.setName(userUpdated.getName());
     }
 }

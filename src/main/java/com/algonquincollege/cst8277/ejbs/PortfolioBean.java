@@ -73,8 +73,8 @@ public class PortfolioBean {
      * @param Portfolio Id
      * @return deleted Portfolio
      */
-    public Portfolio updatePortfolio(int id, Portfolio portfolioUpdated) {
-        em.merge(portfolioUpdated);
-        return portfolioUpdated;
+    public void updatePortfolio(int id, Portfolio portfolioUpdated) {
+        Portfolio ab = getPortfolio(id).get(0);
+        ab.setBalance(portfolioUpdated.getBalance());
     }
 }

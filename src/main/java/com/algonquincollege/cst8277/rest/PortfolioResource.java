@@ -101,7 +101,7 @@ public class PortfolioResource {
     @Path("{id}")
     public Response updatePortfolio(@PathParam("id") int id, Portfolio portfolioToBeUpdated) {
         // accountToBeUpdated.setId(id);
-        Portfolio account = bean.updatePortfolio(id, portfolioToBeUpdated);
-        return Response.ok(account).build();
+        bean.updatePortfolio(id, portfolioToBeUpdated);
+        return Response.ok(portfolioToBeUpdated).build();
     }
 }

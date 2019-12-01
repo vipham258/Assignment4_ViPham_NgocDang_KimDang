@@ -75,8 +75,8 @@ public class BankingBean {
      * @param Account Id, an Account to be updated
      * @return updated Acccount
      */
-    public AccountBase updateBankAccount(int id, AccountBase accountUpdated) {
-        em.merge(accountUpdated);
-        return accountUpdated;
+    public void updateBankAccount(int id, AccountBase accountUpdated) {
+        AccountBase ab = getBankAccountsFor(id).get(0);
+        ab.setBalance(accountUpdated.getBalance());
     }
 }

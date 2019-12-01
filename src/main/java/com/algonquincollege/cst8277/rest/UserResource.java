@@ -101,7 +101,7 @@ public class UserResource {
     @Path("{id}")
     public Response updateUser(@PathParam("id") int id, User userToBeUpdated) {
         // accountToBeUpdated.setId(id);
-        User user = bean.updateUser(id, userToBeUpdated);
-        return Response.ok(user).build();
+        bean.updateUser(id, userToBeUpdated);
+        return Response.ok(userToBeUpdated).build();
     }
 }

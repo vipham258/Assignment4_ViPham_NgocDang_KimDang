@@ -70,10 +70,10 @@ public class AssetBean {
      * Description: Update a Asset by Id
      * 
      * @param Asset Id, asset to be updated
-     * @return updated Asset
      */
-    public Asset updateAsset(int id, Asset assetUpdated) {
-        em.merge(assetUpdated);
-        return assetUpdated;
+    public void updateAsset(int id, Asset assetUpdated) {
+        Asset ab = getAsset(id).get(0);
+        ab.setUnits(assetUpdated.getUnits());
+        ab.setPrice(assetUpdated.getPrice());
     }
 }

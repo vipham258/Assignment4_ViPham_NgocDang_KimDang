@@ -101,7 +101,7 @@ public class AccountResource {
     @Path("{id}")
     public Response updateAccount(@PathParam("id") int id, AccountBase accountToBeUpdated) {
         // accountToBeUpdated.setId(id);
-        AccountBase account = bean.updateBankAccount(id, accountToBeUpdated);
-        return Response.ok(account).build();
+        bean.updateBankAccount(id, accountToBeUpdated);
+        return Response.ok(accountToBeUpdated).build();
     }
 }
