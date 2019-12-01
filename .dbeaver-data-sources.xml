@@ -2,6 +2,18 @@
 <data-sources>
 	<data-source id="h2_server-16ea4a3df04-2d37f305559ab154" provider="generic" driver="h2_server" name="H2 - banking" save-password="true" read-only="false">
 		<connection host="localhost" port="12345" server="" database="~/banking" url="jdbc:h2:tcp://localhost:12345/~/banking" user="sa" password="AwUVM1ZMVhJl8w==" type="dev"/>
+		<virtual-meta-data>
+			<container name="model">
+				<container name="PUBLIC">
+					<entity name="PLATFORM_USER_PLATFORM_ROLE">
+						<constraint name="PRIMARY" type="VIRTUAL KEY">
+							<attribute name="USER_ID"/>
+							<attribute name="ROLE_ID"/>
+						</constraint>
+					</entity>
+				</container>
+			</container>
+		</virtual-meta-data>
 	</data-source>
 	<filters/>
 </data-sources>
