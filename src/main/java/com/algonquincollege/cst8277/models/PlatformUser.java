@@ -1,9 +1,11 @@
-/**************************************************************G*********o****o****g**o****og**joob*********************
+/*********************************************
  * File: PlatformUser.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
  *
- * @date 2019 10
+ * @date 2019 11 30
+
  */
 package com.algonquincollege.cst8277.models;
 
@@ -70,26 +72,52 @@ public class PlatformUser extends ModelBase implements Principal, Serializable {
         this.pwHash = pwHash;
     }
 
+    /**
+    * Description: get flatformRole
+    * 
+    * @return list of platformroles
+    */
     @ManyToMany(targetEntity = PlatformRole.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "PLATFORM_USER_PLATFORM_ROLE", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"))
     public Set<PlatformRole> getPlatformRoles() {
         return platformRoles;
     }
 
+    /**
+     * Description: set a flatformRole
+     * 
+     * @param a set of platfromrole
+     */
     public void setPlatformRoles(Set<PlatformRole> platformRoles) {
         this.platformRoles = platformRoles;
     }
 
+    /**
+     * Description: add a flatformRole
+     * 
+     * @param a role
+     */
     public void addPlatformRole(PlatformRole role) {
         getPlatformRoles().add(role);
     }
 
+    /**
+     * Description: get Banking User
+     * 
+     * @return a bank of that user
+     */
     @OneToOne
     @JoinColumn(name = "BANKING_USER_ID", nullable = true)
     public User getBankingUser() {
         return bankingUser;
     }
-
+    
+    
+    /**
+     * Description: set a banking for user
+     * 
+     * @param bankingUser
+     */
     public void setBankingUser(User bankingUser) {
         this.bankingUser = bankingUser;
     }

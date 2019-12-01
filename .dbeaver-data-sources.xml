@@ -11,6 +11,12 @@
 							<attribute name="ROLE_ID"/>
 						</constraint>
 					</entity>
+					<entity name="USER_ACCOUNT_ACCOUNT">
+						<constraint name="PRIMARY" type="VIRTUAL KEY">
+							<attribute name="USER_ID"/>
+							<attribute name="ACCOUNT_ID"/>
+						</constraint>
+					</entity>
 				</container>
 			</container>
 		</virtual-meta-data>

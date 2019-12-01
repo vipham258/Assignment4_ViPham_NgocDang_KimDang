@@ -1,3 +1,10 @@
+/**************************
+ * File: RestConfig.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 11 30
+ */
 package com.algonquincollege.cst8277.rest;
 
 import static com.algonquincollege.cst8277.util.MyConstants.ADMIN_ROLE;
@@ -35,9 +42,11 @@ public class RestConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<>();
-        //classes.add(UserResource.class);
+        classes.add(UserResource.class);
         classes.add(AccountResource.class);
         classes.add(JacksonFeature.class);
+        classes.add(PortfolioResource.class);
+        classes.add(AssetResource.class);
         return classes;
     }
 }

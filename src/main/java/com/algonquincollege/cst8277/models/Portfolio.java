@@ -1,9 +1,10 @@
-/**************************************************************G*********o****o****g**o****og**joob*********************
+/******************************************
  * File: Portfolio.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
  *
- * @date 2019 10
+ * @date 2019 11 30
  */
 package com.algonquincollege.cst8277.models;
 
@@ -56,16 +57,31 @@ public class Portfolio extends ModelBase implements Serializable {
         return this.id;
     }
 
+    /**
+    * Description: get a list assets
+    * 
+    * @return list of assets
+    */
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     @JsonManagedReference
     public List<Asset> getAssets() {
         return assets;
     }
 
+    /**
+    * Description: set an asset
+    * 
+    * @param a list of assets
+    */
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
     }
 
+    /**
+    * Description: add an asset
+    * 
+    * @param asset
+    */
     public void addAsset(Asset asset) {
         getAssets().add(asset);
     }
