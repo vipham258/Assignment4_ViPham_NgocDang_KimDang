@@ -1,3 +1,10 @@
+/**************************
+ * File: AccountResource.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 12 01
+ */
 package com.algonquincollege.cst8277.rest;
 
 import java.util.List;
@@ -25,6 +32,12 @@ public class AccountResource {
     @EJB
     protected BankingBean bean;
 
+    /**
+     * Description: Retrieve a bank account by id
+     * 
+     * @param Account Id
+     * @return OK if bank account existed
+     */
     @GET
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -43,6 +56,13 @@ public class AccountResource {
         return Response.ok(accounts).build();
     }
 
+    /**
+     * Description: Create a bank account id
+     * 
+     * @param id, new account to be created
+     * @return OK if bank account is successful created
+     */
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -52,6 +72,12 @@ public class AccountResource {
         return Response.ok(account).build();
     }
 
+    /**
+     * Description: Delete a bank account by id
+     * 
+     * @param Account Id
+     * @return OK if bank account is successful deleted
+     */
     @DELETE
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -62,6 +88,12 @@ public class AccountResource {
         return Response.ok(account).build();
     }
 
+    /**
+     * Description: Update a bank account by id
+     * 
+     * @param Account Id, account to be updated
+     * @return OK if bank account is successful updated
+     */
     @PUT
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)

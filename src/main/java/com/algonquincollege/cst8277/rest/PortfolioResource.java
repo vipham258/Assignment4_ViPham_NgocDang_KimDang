@@ -1,3 +1,10 @@
+/**************************
+ * File: PortfolioResource.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ * @date 2019 12 01
+ */
 package com.algonquincollege.cst8277.rest;
 
 import java.util.List;
@@ -25,6 +32,12 @@ public class PortfolioResource {
     @EJB
     protected PortfolioBean bean;
 
+    /**
+     * Description: Retrieve a Portfolio by id
+     * 
+     * @param Portfolio Id
+     * @return OK if Portfolio is existed
+     */
     @GET
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -43,6 +56,13 @@ public class PortfolioResource {
         return Response.ok(accounts).build();
     }
 
+    /**
+     * Description: Create a Portfolio
+     * 
+     * @param Portfolio Id, new Portfolio
+     * @return OK if Portfolio is successful created
+     */
+
     @POST
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -52,6 +72,12 @@ public class PortfolioResource {
         return Response.ok(add).build();
     }
 
+    /**
+     * Description: Delete a Portfolio by Id
+     * 
+     * @param Portfolio Id
+     * @return OK if Portfolio is successful deleted
+     */
     @DELETE
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -62,6 +88,12 @@ public class PortfolioResource {
         return Response.ok(delete).build();
     }
 
+    /**
+     * Description: Delete a Portfolio by Id
+     * 
+     * @param Portfolio Id, Portfolio to be updated
+     * @return OK if Portfolio is successful updated
+     */
     @PUT
     @RolesAllowed(MyConstants.ADMIN_ROLE)
     @Consumes(MediaType.APPLICATION_JSON)

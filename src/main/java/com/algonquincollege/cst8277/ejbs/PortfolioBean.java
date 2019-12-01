@@ -3,7 +3,7 @@
  * Course materials (19F) CST 8277
  * @author Vi Pham
  *
- * @date 2019 11
+ * @date 2019 12 01
  */
 package com.algonquincollege.cst8277.ejbs;
 
@@ -24,6 +24,12 @@ public class PortfolioBean {
     @PersistenceContext(unitName = PU_NAME)
     protected EntityManager em;
 
+    /**
+     * Description: a list of Portfolio from Portfolio table
+     * 
+     * @param Portfolio Id
+     * @return a list of Portfolio
+     */
     // TODO - methods to handle CRUD for User entity
     public List<Portfolio> getPortfolio(int id) {
         Query query = em.createQuery("SELECT u FROM Portfolio u WHERE u.id = :tempID").setParameter("tempID", id);
@@ -37,17 +43,36 @@ public class PortfolioBean {
         return query.getResultList();
     }
 
+    /**
+     * Description: Add a new Portfolio
+     * 
+     * @param a new Portfolio
+     * @return a new Portfolio
+     */
+
     public Portfolio addPortfolio(Portfolio newPortfolio) {
         em.persist(newPortfolio);
         return newPortfolio;
     }
 
+    /**
+     * Description: Delete a Portfolio by Id
+     * 
+     * @param Portfolio Id
+     * @return deleted Portfolio
+     */
     public Portfolio deletePortfolio(int deletedID) {
         Portfolio delete = em.find(Portfolio.class, deletedID);
         em.remove(delete);
         return delete;
     }
 
+    /**
+     * Description: Delete a Portfolio by Id
+     * 
+     * @param Portfolio Id
+     * @return deleted Portfolio
+     */
     public Portfolio updatePortfolio(int id, Portfolio portfolioUpdated) {
         em.merge(portfolioUpdated);
         return portfolioUpdated;

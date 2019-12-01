@@ -2,8 +2,9 @@
  * File: PlatformRole.java
  * Course materials (19F) CST 8277
  * @author Mike Norman
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
  *
- * @date 2019 10
+ * @date 2019 11 30
  */
 package com.algonquincollege.cst8277.models;
 
@@ -56,15 +57,30 @@ public class PlatformRole extends ModelBase implements Serializable {
         this.roleName = roleName;
     }
 
+    /**
+    * Description: get a list of platformUser
+    * 
+    * @return list of platformUsers
+    */
     @ManyToMany(mappedBy = "platformRoles", cascade = CascadeType.PERSIST)
     public List<PlatformUser> getPlatformUsers() {
         return platformUsers;
     }
 
+    /**
+    * Description: set a list of platformUser
+    * 
+    * @param a list of platformUsers
+    */
     public void setPlatformUsers(List<PlatformUser> platformUsers) {
         this.platformUsers = platformUsers;
     }
 
+    /**
+    * Description: add a platformUser
+    * 
+    * @param a user
+    */
     public void addPlatformUser(PlatformUser user) {
         getPlatformUsers().add(user);
     }

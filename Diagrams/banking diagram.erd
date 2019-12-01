@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diagram version="1" name="banking diagram" time="201911261439">
+<diagram version="1" name="banking diagram" time="201912011541">
 	<entities>
 		<data-source id="h2_server-16ea4a3df04-2d37f305559ab154">
 			<entity id="1" name="ACCOUNT" fq-name="PUBLIC.ACCOUNT">
