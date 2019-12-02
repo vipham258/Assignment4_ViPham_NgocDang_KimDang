@@ -45,29 +45,34 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public abstract class AccountBase extends ModelBase {
 
     // I moved balance from ModelBase to here
-    /**An account balance*/
+    /** An account balance */
     protected double balance;
-    
-    /**A List of owners*/
+
+    /** A List of owners */
     // protected int id;
     protected List<User> owners;
 
     /**
      * Description: getBalance
+     * 
      * @return balance
      */
     public double getBalance() {
         return balance;
     }
+
     /**
      * Description: setBalance
-     * @param: balance
+     * 
+     * @param balance
      */
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
     /**
      * Description: getId
+     * 
      * @return id
      */
     @Override
@@ -85,6 +90,7 @@ public abstract class AccountBase extends ModelBase {
 
     /**
      * Description: getOwners
+     * 
      * @return list of owners
      */
     // TODO - finish the @ManyToMany mapping
@@ -94,16 +100,20 @@ public abstract class AccountBase extends ModelBase {
     public List<User> getOwners() {
         return owners;
     }
+
     /**
      * Description: setOwners
+     * 
      * @param owners
      */
     public void setOwners(List<User> owners) {
         this.owners = owners;
     }
+
     /**
      * Description: get owners and add new owners
-     * @param owners
+     * 
+     * @param owner
      */
     public void addOwner(User owner) {
         getOwners().add(owner);

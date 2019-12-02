@@ -35,7 +35,7 @@ public class AccountResource {
     /**
      * Description: Retrieve a bank account by id
      * 
-     * @param Account Id
+     * @param id
      * @return OK if bank account existed
      */
     @GET
@@ -59,7 +59,7 @@ public class AccountResource {
     /**
      * Description: Create a bank account id
      * 
-     * @param id, new account to be created
+     * @param newAccountToBeCreated
      * @return OK if bank account is successful created
      */
 
@@ -75,7 +75,7 @@ public class AccountResource {
     /**
      * Description: Delete a bank account by id
      * 
-     * @param Account Id
+     * @param id
      * @return OK if bank account is successful deleted
      */
     @DELETE
@@ -91,7 +91,7 @@ public class AccountResource {
     /**
      * Description: Update a bank account by id
      * 
-     * @param Account Id, account to be updated
+     * @param id, accountToBeUpdated
      * @return OK if bank account is successful updated
      */
     @PUT

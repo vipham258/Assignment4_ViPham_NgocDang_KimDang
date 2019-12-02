@@ -16,21 +16,23 @@ import javax.persistence.OneToOne;
 
 /**
  * The persistent class for the ACCOUNT database table.
- * @author Vi Pham, Ngoc Dang, Ngan Dang
- * @date Nov 2019
+ * 
+ * @author Vi Pham, Ngoc Dang, Ngan Dang date Nov 2019
  */
 @Entity
 @DiscriminatorValue(value = "I")
 public class InvestmentAccount extends AccountBase implements Serializable {
     /** explicit set serialVersionUID */
     private static final long serialVersionUID = 1L;
-    /**portfolio*/
+    /** portfolio */
     private Portfolio portfolio;
 
     public InvestmentAccount() {
     }
+
     /**
      * get portfolio
+     * 
      * @return portfolio
      */
 
@@ -41,8 +43,10 @@ public class InvestmentAccount extends AccountBase implements Serializable {
     public Portfolio getPortfolio() {
         return this.portfolio;
     }
+
     /**
      * set portfolio
+     * 
      * @param portfolio
      */
     public void setPortfolio(Portfolio portfolio) {

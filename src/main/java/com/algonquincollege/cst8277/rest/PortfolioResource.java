@@ -35,7 +35,7 @@ public class PortfolioResource {
     /**
      * Description: Retrieve a Portfolio by id
      * 
-     * @param Portfolio Id
+     * @param id
      * @return OK if Portfolio is existed
      */
     @GET
@@ -59,7 +59,7 @@ public class PortfolioResource {
     /**
      * Description: Create a Portfolio
      * 
-     * @param Portfolio Id, new Portfolio
+     * @param newTemp
      * @return OK if Portfolio is successful created
      */
 
@@ -75,7 +75,7 @@ public class PortfolioResource {
     /**
      * Description: Delete a Portfolio by Id
      * 
-     * @param Portfolio Id
+     * @param id
      * @return OK if Portfolio is successful deleted
      */
     @DELETE
@@ -91,7 +91,7 @@ public class PortfolioResource {
     /**
      * Description: Delete a Portfolio by Id
      * 
-     * @param Portfolio Id, Portfolio to be updated
+     * @param id, portfolioToBeUpdated
      * @return OK if Portfolio is successful updated
      */
     @PUT

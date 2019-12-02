@@ -1,12 +1,19 @@
 /**************************************************************G*********o****o****g**o****og**joob*********************
  * File: UserBean.java
  * Course materials (19F) CST 8277
- * @author Vi Pham
+ * @author Vi Pham, Ngoc Dang, Kim Dang
  *
  * @date 2019 11 30
  */
 package com.algonquincollege.cst8277.ejbs;
 
+/**
+ * File: UserBean.java
+ * Course materials (19F) CST 8277
+ * @author Vi Pham, Ngoc Dang, Kim Dang
+ *
+ * @date 2019 11 30
+ */
 import static com.algonquincollege.cst8277.util.MyConstants.PU_NAME;
 
 import java.util.List;
@@ -27,16 +34,21 @@ public class AssetBean {
     /**
      * Description: a list of asset from Asset table
      * 
-     * @param Asset Id
+     * @param id
      * @return a list of asset
      */
-    // TODO - methods to handle CRUD for User entity
     public List<Asset> getAsset(int id) {
         Query query = em.createQuery("SELECT u FROM Asset u WHERE u.id = :tempID").setParameter("tempID", id);
         System.out.print(query.getFirstResult());
         return query.getResultList();
     }
 
+    /**
+     * Description: a list of asset from Asset table
+     * 
+     * @param name
+     * @return a list of asset
+     */
     public List<Asset> getAssetByName(String name) {
         Query query = em.createQuery("SELECT u FROM Asset u WHERE u.name = :name").setParameter("name", name);
         System.out.print(query.getFirstResult());
@@ -46,7 +58,7 @@ public class AssetBean {
     /**
      * Description: Add a new Asset
      * 
-     * @param a new Asset
+     * @param newAsset
      * @return a new Asset
      */
     public Asset addAsset(Asset newAsset) {
@@ -57,7 +69,7 @@ public class AssetBean {
     /**
      * Description: Delete a Asset by Id
      * 
-     * @param Asset Id
+     * @param deletedID
      * @return deleted Asset
      */
     public Asset deleteAsset(int deletedID) {
@@ -69,7 +81,7 @@ public class AssetBean {
     /**
      * Description: Update a Asset by Id
      * 
-     * @param Asset Id, asset to be updated
+     * @param id, assetUpdated
      */
     public void updateAsset(int id, Asset assetUpdated) {
         Asset ab = getAsset(id).get(0);

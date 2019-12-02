@@ -12,16 +12,15 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-
 /**
  * The persistent class for the ACCOUNT database table.
- * @author Vi Pham, Ngoc Dang, Ngan Dang
- * @date Nov 2019
+ * 
+ * @author Vi Pham, Ngoc Dang, Ngan Dang date Nov 2019
  */
 @Entity
 @DiscriminatorValue(value = "C")
 public class ChequingAccount extends AccountBase implements Serializable {
     /** explicit set serialVersionUID */
-	private static final long serialVersionUID = 1L;
-	
+    private static final long serialVersionUID = 1L;
+
 }

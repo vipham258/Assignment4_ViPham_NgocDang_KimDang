@@ -17,11 +17,13 @@ import javax.security.enterprise.identitystore.IdentityStore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.HttpHeaders;
+
 /**
  * The class MyAuthenticationMechanism implements HttpAuthenticationMechanism
- * obtaining a caller's credentials in some way, using the HTTP protocol where necessary.
- * @author Vi Pham, Ngoc Dang, Ngan Dang
- * @date Nov 2019
+ * obtaining a caller's credentials in some way, using the HTTP protocol where
+ * necessary.
+ * 
+ * @author Vi Pham, Ngoc Dang, Ngan Dang date Nov 2019
  */
 @ApplicationScoped
 public class MyAuthenticationMechanism implements HttpAuthenticationMechanism {
@@ -31,13 +33,16 @@ public class MyAuthenticationMechanism implements HttpAuthenticationMechanism {
 
     /**
      * {@inheritDoc}
-     * @return result check if authHeader is not null and if name and password is not null
+     * 
+     * @return result check if authHeader is not null and if name and password is
+     *         not null
      */
     @Override
-    public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthenticationException {
+    public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response,
+            HttpMessageContext httpMessageContext) throws AuthenticationException {
 
         AuthenticationStatus result = httpMessageContext.doNothing();
-        //parse BasicAuth header
+        // parse BasicAuth header
         String name = null;
         String password = null;
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
@@ -45,7 +50,7 @@ public class MyAuthenticationMechanism implements HttpAuthenticationMechanism {
             boolean startsWithBasic = authHeader.toLowerCase().startsWith(BASIC_AUTH.toLowerCase());
             if (startsWithBasic) {
                 String b64Token = authHeader.substring(BASIC_AUTH.length() + 1, authHeader.length());
-                //                                                 ^^^^^^^^^^^ account for space between BASIC and base64-string
+                // ^^^^^^^^^^^ account for space between BASIC and base64-string
                 byte[] token = Base64.getDecoder().decode(b64Token);
                 String tmp = new String(token);
                 String[] tokenFields = tmp.split(":");
@@ -56,11 +61,11 @@ public class MyAuthenticationMechanism implements HttpAuthenticationMechanism {
             }
         }
         if (name != null && password != null) {
-            CredentialValidationResult validationResult = identityStore.validate(new UsernamePasswordCredential(name, password));
+            CredentialValidationResult validationResult = identityStore
+                    .validate(new UsernamePasswordCredential(name, password));
             if (validationResult.getStatus() == VALID) {
                 result = httpMessageContext.notifyContainerAboutLogin(validationResult);
-            }
-            else {
+            } else {
                 result = httpMessageContext.responseUnauthorized();
             }
         }

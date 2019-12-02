@@ -18,6 +18,13 @@ import javax.persistence.Query;
 
 import com.algonquincollege.cst8277.models.Portfolio;
 
+/**
+ * File: UserBean.java Course materials (19F) CST 8277
+ * 
+ * @author Vi Pham
+ *
+ *         date 2019 12 01
+ */
 @Stateless
 public class PortfolioBean {
 
@@ -27,16 +34,21 @@ public class PortfolioBean {
     /**
      * Description: a list of Portfolio from Portfolio table
      * 
-     * @param Portfolio Id
+     * @param id
      * @return a list of Portfolio
      */
-    // TODO - methods to handle CRUD for User entity
     public List<Portfolio> getPortfolio(int id) {
         Query query = em.createQuery("SELECT u FROM Portfolio u WHERE u.id = :tempID").setParameter("tempID", id);
         System.out.print(query.getFirstResult());
         return query.getResultList();
     }
 
+    /**
+     * Description: a list of Portfolio from Portfolio table
+     * 
+     * @param b
+     * @return List of portfolio
+     */
     public List<Portfolio> getPortfolioByBalance(double b) {
         Query query = em.createQuery("SELECT u FROM Portfolio u WHERE u.balance = :b").setParameter("b", b);
         System.out.print(query.getFirstResult());
@@ -46,8 +58,8 @@ public class PortfolioBean {
     /**
      * Description: Add a new Portfolio
      * 
-     * @param a new Portfolio
-     * @return a new Portfolio
+     * @param newPortfolio
+     * @return newPortfolio
      */
 
     public Portfolio addPortfolio(Portfolio newPortfolio) {
@@ -58,8 +70,8 @@ public class PortfolioBean {
     /**
      * Description: Delete a Portfolio by Id
      * 
-     * @param Portfolio Id
-     * @return deleted Portfolio
+     * @param deletedID
+     * @return delete
      */
     public Portfolio deletePortfolio(int deletedID) {
         Portfolio delete = em.find(Portfolio.class, deletedID);
@@ -70,8 +82,7 @@ public class PortfolioBean {
     /**
      * Description: Delete a Portfolio by Id
      * 
-     * @param Portfolio Id
-     * @return deleted Portfolio
+     * @param id,portfolioUpdated
      */
     public void updatePortfolio(int id, Portfolio portfolioUpdated) {
         Portfolio ab = getPortfolio(id).get(0);

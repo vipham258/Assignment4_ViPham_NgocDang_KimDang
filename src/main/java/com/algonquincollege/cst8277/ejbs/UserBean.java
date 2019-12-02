@@ -1,7 +1,7 @@
 /**************************************************************G*********o****o****g**o****og**joob*********************
  * File: UserBean.java
  * Course materials (19F) CST 8277
- * @author Vi Pham
+ * @author Vi Pham, Ngoc Dang, Kim Dang
  *
  * @date 2019 12 01
  */
@@ -27,16 +27,21 @@ public class UserBean {
     /**
      * Description: a list of User from User table
      * 
-     * @param User Id
+     * @param userId
      * @return a list of User
      */
-    // TODO - methods to handle CRUD for User entity
     public List<User> getUsersFor(int userId) {
         Query query = em.createQuery("SELECT u FROM User u WHERE u.id = :tempID").setParameter("tempID", userId);
         System.out.print(query.getFirstResult());
         return query.getResultList();
     }
 
+    /**
+     * Description: a list of User from User table
+     * 
+     * @param name
+     * @return a list of User
+     */
     public List<User> getUsersByName(String name) {
         Query query = em.createQuery("SELECT u FROM User u WHERE u.name = :name").setParameter("name", name);
         System.out.print(query.getFirstResult());
@@ -46,8 +51,8 @@ public class UserBean {
     /**
      * Description: Add a new user
      * 
-     * @param new User
-     * @return a new User
+     * @param newUser
+     * @return newUser
      */
 
     public User addUser(User newUser) {
@@ -58,8 +63,8 @@ public class UserBean {
     /**
      * Description: Delete a User by Id
      * 
-     * @param User id
-     * @return deleted User
+     * @param deletedID
+     * @return delete
      */
     public User deleteUser(int deletedID) {
         User delete = em.find(User.class, deletedID);
@@ -70,7 +75,7 @@ public class UserBean {
     /**
      * Description: Update a User by Id
      * 
-     * @param User id, user need to be updated
+     * @param id, userUpdated
      */
     public void updateUser(int id, User userUpdated) {
         User ab = getUsersFor(id).get(0);

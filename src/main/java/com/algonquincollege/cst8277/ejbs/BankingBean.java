@@ -1,3 +1,5 @@
+package com.algonquincollege.cst8277.ejbs;
+
 /***********************
  * File: BankingBean.java
  * Course materials (19F) CST 8277
@@ -6,8 +8,6 @@
  *
  * @date 2019 11 30
  */
-package com.algonquincollege.cst8277.ejbs;
-
 import static com.algonquincollege.cst8277.util.MyConstants.PU_NAME;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class BankingBean {
     /**
      * Description: a list of all accounts from AccountBase table
      * 
-     * @param account Id
+     * @param accountId
      * @return a list of bank account
      */
     public List<AccountBase> getBankAccountsFor(int accountId) {
@@ -38,6 +38,12 @@ public class BankingBean {
         return query.getResultList();
     }
 
+    /**
+     * Description: a list of all accounts from AccountBase table
+     * 
+     * @param b
+     * @return a list of bank account
+     */
     public List<AccountBase> getBankAccountsByBalance(double b) {
         Query query = em.createQuery("SELECT u FROM AccountBase u WHERE u.balance = :b").setParameter("b", b);
         System.out.print(query.getFirstResult());
@@ -47,8 +53,8 @@ public class BankingBean {
     /**
      * Description: Add a new bank account
      * 
-     * @param a new Account
-     * @return a new Account
+     * @param newAccount
+     * @return newAccount
      */
 
     public AccountBase addBankAccount(AccountBase newAccount) {
@@ -59,8 +65,8 @@ public class BankingBean {
     /**
      * Description: Delete a bank account by Id
      * 
-     * @param Account Id
-     * @return deleted Acccount
+     * @param deletedAccountID
+     * @return deleteAcccount
      */
     public AccountBase deleteBankAccount(int deletedAccountID) {
 
@@ -72,8 +78,7 @@ public class BankingBean {
     /**
      * Description: Update a bank account by Id
      * 
-     * @param Account Id, an Account to be updated
-     * @return updated Acccount
+     * @param id, accountUpdated
      */
     public void updateBankAccount(int id, AccountBase accountUpdated) {
         AccountBase ab = getBankAccountsFor(id).get(0);

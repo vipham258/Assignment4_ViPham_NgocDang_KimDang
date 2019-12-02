@@ -35,7 +35,7 @@ public class UserResource {
     /**
      * Description: Retrieve a User by id
      * 
-     * @param User Id
+     * @param id
      * @return OK if User is existed
      */
     @GET
@@ -59,7 +59,7 @@ public class UserResource {
     /**
      * Description: Create a new User
      * 
-     * @param User Id, new User Temp
+     * @param newTemp
      * @return OK if User is successful created
      */
 
@@ -75,7 +75,7 @@ public class UserResource {
     /**
      * Description: Delelte a User by Id
      * 
-     * @param User Id
+     * @param id
      * @return OK if User is successful deleted
      */
     @DELETE
@@ -91,7 +91,7 @@ public class UserResource {
     /**
      * Description: Update a User by Id
      * 
-     * @param User Id, User to be updated
+     * @param id, userToBeUpdated
      * @return OK if User is successful updated
      */
     @PUT

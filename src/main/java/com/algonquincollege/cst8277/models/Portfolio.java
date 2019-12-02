@@ -58,10 +58,10 @@ public class Portfolio extends ModelBase implements Serializable {
     }
 
     /**
-    * Description: get a list assets
-    * 
-    * @return list of assets
-    */
+     * Description: get a list assets
+     * 
+     * @return list of assets
+     */
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     @JsonManagedReference
     public List<Asset> getAssets() {
@@ -69,19 +69,19 @@ public class Portfolio extends ModelBase implements Serializable {
     }
 
     /**
-    * Description: set an asset
-    * 
-    * @param a list of assets
-    */
+     * Description: set an asset
+     * 
+     * @param assets
+     */
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
     }
 
     /**
-    * Description: add an asset
-    * 
-    * @param asset
-    */
+     * Description: add an asset
+     * 
+     * @param asset
+     */
     public void addAsset(Asset asset) {
         getAssets().add(asset);
     }

@@ -35,7 +35,7 @@ public class AssetResource {
     /**
      * Description: Retrieve an asset by id
      * 
-     * @param Asset Id
+     * @param id
      * @return OK if Asset is existed
      */
     @GET
@@ -59,7 +59,7 @@ public class AssetResource {
     /**
      * Description: Create an asset
      * 
-     * @param Asset Id, new temp
+     * @param newTemp
      * @return OK if an asset is successful created
      */
 
@@ -75,7 +75,7 @@ public class AssetResource {
     /**
      * Description: Delete an asset by Id
      * 
-     * @param Asset Id
+     * @param id
      * @return OK if an asset is successful deleted
      */
     @DELETE

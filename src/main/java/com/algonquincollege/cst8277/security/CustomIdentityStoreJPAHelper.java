@@ -24,9 +24,9 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 import com.algonquincollege.cst8277.models.PlatformRole;
 import com.algonquincollege.cst8277.models.PlatformUser;
+
 /**
- * @author Vi Pham, Ngoc Dang, Ngan Dang
- * @date Nov 2019
+ * @author Vi Pham, Ngoc Dang, Ngan Dang date Nov 2019
  */
 @Singleton
 public class CustomIdentityStoreJPAHelper {
@@ -39,6 +39,7 @@ public class CustomIdentityStoreJPAHelper {
 
     /**
      * find users by name
+     * 
      * @param username
      * @return platformUser
      */
@@ -79,6 +80,7 @@ public class CustomIdentityStoreJPAHelper {
 //    }
     /**
      * find roles for user
+     * 
      * @param username
      * @return roles is found
      */
@@ -90,16 +92,20 @@ public class CustomIdentityStoreJPAHelper {
         }
         return foundRoles;
     }
+
     /**
      * save platform user
+     * 
      * @param platformUser
      */
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void savePlatformUser(PlatformUser platformUser) {
         em.persist(platformUser);
     }
+
     /**
      * save platform role
+     * 
      * @param platformRole
      */
     @TransactionAttribute(TransactionAttributeType.REQUIRED)

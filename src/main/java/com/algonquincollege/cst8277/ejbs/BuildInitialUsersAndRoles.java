@@ -1,10 +1,4 @@
 /**************************************************************G*********o****o****g**o****og**joob*********************
- * File: BuildDefaultUsersAndRoles.java
- * Course materials (19F) CST 8277
- * @author Mike Norman
- * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
- *
- * @date 2019 11 30
  */
 package com.algonquincollege.cst8277.ejbs;
 
@@ -44,12 +38,19 @@ import com.algonquincollege.cst8277.security.CustomIdentityStoreJPAHelper;
  * it runs at startup.
  * 
  * How do we 'bootstrap' the security system? This EJB checks to see if the
- * default ADMIN user has already been created. If not, it then builds the ADMIN role,
- * the USER role and the default ADMIN user (with role of ADMIN) and stores them in the database.
+ * default ADMIN user has already been created. If not, it then builds the ADMIN
+ * role, the USER role and the default ADMIN user (with role of ADMIN) and
+ * stores them in the database.
  * 
- * The name of the default ADMIN user is stored in the META-INF/microprofile-config.properties
- * file, along with its initial password
+ * The name of the default ADMIN user is stored in the
+ * META-INF/microprofile-config.properties file, along with its initial password
+ * File: BuildDefaultUsersAndRoles.java Course materials (19F) CST 8277
  * 
+ * original author: Mike Norman
+ * 
+ * @author Vi Pham, Kim Ngan Dang, Nhu Ngoc Dang
+ *
+ *         date 2019 11 30
  */
 @Startup
 @Singleton
@@ -57,7 +58,7 @@ public class BuildInitialUsersAndRoles {
 
     @Inject
     protected CustomIdentityStoreJPAHelper jpaHelper;
-    
+
     @Inject
     @ConfigProperty(name = DEFAULT_ADMIN_USER_PROPNAME, defaultValue = DEFAULT_ADMIN_USER)
     private String defaultAdminUsername;
@@ -94,8 +95,8 @@ public class BuildInitialUsersAndRoles {
             platformRoles.add(theAdminRole);
             defaultAdminUser.setPlatformRoles(platformRoles);
             jpaHelper.savePlatformUser(defaultAdminUser);
-            
-            //Assumption - if building admin user, should also build USER_ROLE
+
+            // Assumption - if building admin user, should also build USER_ROLE
             PlatformRole theUserRole = new PlatformRole();
             theUserRole.setRoleName(USER_ROLE);
             jpaHelper.savePlatformRole(theUserRole);

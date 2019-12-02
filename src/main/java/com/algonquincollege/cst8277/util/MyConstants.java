@@ -13,14 +13,14 @@ package com.algonquincollege.cst8277.util;
  * Servlets, etc.)
  * <p>
  * The key idea here is that often an annotation contains String-based
- * parameters that <b><u>must be an exact match</u></b> <br/>
- * to a string used elsewhere. Use of this type of 'Contants' Interface class
- * prevents errors such as: <blockquote>
+ * parameters that <b><u>must be an exact match</u></b> to a string used
+ * elsewhere. Use of this type of 'Contants' Interface class prevents errors
+ * such as: <blockquote>
  * 
  * <pre>
 {@literal @}GET
 {@literal @}Path("{<b><u>emailID</u></b>}/project")  //accidently capitalized <b><u>ID</u></b>, instead of camel-case <b><u>Id</u></b>
-public List<Project> getProjects({@literal @}PathParam("<b><u>emailId</u></b>") String emailId) ...  // path parameter does not match Annotation
+public List Project getProjects({@literal @}PathParam("<b><u>emailId</u></b>") String emailId) ...  // path parameter does not match Annotation
  * </pre>
  * 
  * </blockquote>

@@ -53,13 +53,12 @@ public class User extends ModelBase implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
     /**
-    * Description: get a list of banking accounts
-    * 
-    * @return a list of banking accounts
-    */
+     * Description: get a list of banking accounts
+     * 
+     * @return a list of banking accounts
+     */
     // TODO - finish the @ManyToMany mapping
     @ManyToMany(mappedBy = "owners", cascade = CascadeType.PERSIST)
     public List<AccountBase> getAccounts() {
@@ -67,19 +66,19 @@ public class User extends ModelBase implements Serializable {
     }
 
     /**
-    * Description: set a banking account
-    * 
-    * @param a list account of Account Base
-    */
+     * Description: set a banking account
+     * 
+     * @param accounts
+     */
     public void setAccounts(List<AccountBase> accounts) {
         this.accounts = accounts;
     }
 
     /**
-    * Description: add a banking account
-    * 
-    * @param an account
-    */
+     * Description: add a banking account
+     * 
+     * @param a
+     */
     public void addAccount(AccountBase a) {
         getAccounts().add(a);
     }

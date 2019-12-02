@@ -15,9 +15,8 @@ import javax.servlet.annotation.WebListener;
 
 /**
  * Programatically replace web.xml setup with this
- * {@link ServletContextListener} <br/>
- * NB: some web.xml elements cannot be programatically replaced, for example
- * &lt;welcome-file-list&gt;
+ * {@link ServletContextListener} NB: some web.xml elements cannot be
+ * programatically replaced, for example &lt;welcome-file-list&gt;
  * 
  * @author mwnorman
  */

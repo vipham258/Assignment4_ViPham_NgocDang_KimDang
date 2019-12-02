@@ -73,10 +73,10 @@ public class PlatformUser extends ModelBase implements Principal, Serializable {
     }
 
     /**
-    * Description: get flatformRole
-    * 
-    * @return list of platformroles
-    */
+     * Description: get flatformRole
+     * 
+     * @return list of platformroles
+     */
     @ManyToMany(targetEntity = PlatformRole.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "PLATFORM_USER_PLATFORM_ROLE", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"))
     public Set<PlatformRole> getPlatformRoles() {
@@ -86,7 +86,7 @@ public class PlatformUser extends ModelBase implements Principal, Serializable {
     /**
      * Description: set a flatformRole
      * 
-     * @param a set of platfromrole
+     * @param platformRoles
      */
     public void setPlatformRoles(Set<PlatformRole> platformRoles) {
         this.platformRoles = platformRoles;
@@ -95,7 +95,7 @@ public class PlatformUser extends ModelBase implements Principal, Serializable {
     /**
      * Description: add a flatformRole
      * 
-     * @param a role
+     * @param role
      */
     public void addPlatformRole(PlatformRole role) {
         getPlatformRoles().add(role);
@@ -111,8 +111,7 @@ public class PlatformUser extends ModelBase implements Principal, Serializable {
     public User getBankingUser() {
         return bankingUser;
     }
-    
-    
+
     /**
      * Description: set a banking for user
      * 

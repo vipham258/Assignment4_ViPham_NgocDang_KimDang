@@ -58,29 +58,29 @@ public class PlatformRole extends ModelBase implements Serializable {
     }
 
     /**
-    * Description: get a list of platformUser
-    * 
-    * @return list of platformUsers
-    */
+     * Description: get a list of platformUser
+     * 
+     * @return list of platformUsers
+     */
     @ManyToMany(mappedBy = "platformRoles", cascade = CascadeType.PERSIST)
     public List<PlatformUser> getPlatformUsers() {
         return platformUsers;
     }
 
     /**
-    * Description: set a list of platformUser
-    * 
-    * @param a list of platformUsers
-    */
+     * Description: set a list of platformUser
+     * 
+     * @param platformUsers
+     */
     public void setPlatformUsers(List<PlatformUser> platformUsers) {
         this.platformUsers = platformUsers;
     }
 
     /**
-    * Description: add a platformUser
-    * 
-    * @param a user
-    */
+     * Description: add a platformUser
+     * 
+     * @param user
+     */
     public void addPlatformUser(PlatformUser user) {
         getPlatformUsers().add(user);
     }
